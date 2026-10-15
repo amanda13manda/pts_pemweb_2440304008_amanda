@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggleBtn.textContent = isDark ? '☀️ Mode' : '🌙 Mode';
     });
 
-    // 2. FETCH REST API DUMMYJSON
+    // 2. FETCH REST API DUMMYJSON 
     async function loadProductsData() {
         try {
             loadingState.style.display = 'block';
