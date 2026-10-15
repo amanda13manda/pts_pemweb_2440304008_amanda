@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Store Inventory</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- 1. NAVBAR GAYA DRIBBBLE (Pencarian & Elemen Terintegrasi) -->
+    <header class="navbar">
+        <div class="container-navbar">
+            <div class="nav-left">
+                <a href="#dashboard" class="logo">🛍️ Express Store</a>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Cari nama atau kategori produk...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#katalog">Katalog Produk</a>
+                <a href="#pesan-form">Request Stok</a>
+                <button id="themeToggleBtn" class="btn-theme">🌙 Mode</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. HERO / HEADER KONTEN -->
+    <section class="pahlawan-konten" id="dashboard">
+        <div class="container">
+            <h1 class="pahlawan-title">Product Dashboard & Inventory</h1>
+            <p class="pahlawan-desc">
+                Pusat kendali inventaris, analisis data harga, dan katalog produk ritel digital.
+            </p>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <!-- 4. KOTAK STATISTIK / ANALISIS DATA OTOMATIS -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Rata-rata Harga Produk</h3>
+                    <p id="avgPriceDisplay">Memuat data...</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Produk Termahal (Signature)</h3>
+                    <p id="maxPriceDisplay">Memuat data...</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Jumlah Kategori</h3>
+                    <p id="categoryCountDisplay">Memuat data...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CONTROL BAR (SORTING DRIBBBLE STYLE) -->
+        <section id="katalog" class="control-section">
+            <div class="control-header">
+                <h2>Katalog Inventaris Produk</h2>
+                <div class="sort-wrapper">
+                    <label for="sortSelect"><i class="fas fa-filter"></i> Urutkan:</label>
+                    <select id="sortSelect">
+                        <option value="">Harga</option>
+                        <option value="asc">Rendah ke Tinggi</option>
+                        <option value="desc">Tinggi ke Rendah</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. LOADING, ERROR, & PRODUCT GRID -->
+        <section class="data-section">
+            <div id="loadingState" class="state-message">
+                <p><i class="fas fa-spinner fa-spin"></i> Memuat data produk dari server DummyJSON...</p>
+            </div>
+
+            <div id="errorState" class="state-message error-box" style="display: none;">
+                <p id="errorText">Gagal memuat data dari server.</p>
+                <button id="retryBtn" class="btn-primary">Coba Lagi (Retry)</button>
+            </div>
+
+            <div id="productGrid" class="container-grid">
+                <!-- Kartu produk akan di-render dinamis lewat JavaScript -->
+            </div>
+        </section>
+
+        <!-- 7. FORM & VALIDASI (Digit Z = 8) -->
+        <section id="pesan-form" class="form-section">
+            <h2>Form Pengajuan / Permintaan Stok Barang</h2>
+            <form id="bakeryForm">
+                <div class="form-group">
+                    <label for="customerName">Nama Pemesan / Staf:</label>
+                    <input type="text" id="customerName" required placeholder="Masukkan nama lengkap...">
+                </div>
+
+                <div class="form-group">
+                    <label for="customerEmail">Email Pemesan:</label>
+                    <input type="email" id="customerEmail" required placeholder="nama@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="cakeCategory">Pilih Kategori Produk (Wajib Pilih):</label>
+                    <select id="cakeCategory" required>
+                        <option value="">-- Pilih Kategori --</option>
+                        <option value="beauty">Beauty & Cosmetics</option>
+                        <option value="fragrances">Fragrances</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="groceries">Groceries</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">Kirim Permintaan</button>
+            </form>
+            <p id="formFeedback" class="feedback-msg"></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Express Store Inventory | Dibuat oleh Amanda | NIM: 2440304008 - UBT</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
